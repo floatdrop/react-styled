@@ -1,0 +1,27 @@
+{
+  "name": "react-styled",
+  "version": "0.0.0",
+  "description": "Apply styles from CSS to React DOM",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/floatdrop/react-styled"
+  },
+  "keywords": [
+    "React",
+    "CSS",
+    "styles"
+  ],
+  "author": "Vsevolod Strukchinsky <floatdrop@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/floatdrop/react-styled/issues"
+  },
+  "homepage": "https://github.com/floatdrop/react-styled",
+  "devDependencies": {
+    "mocha": "^2.1.0"
+  }
+}
