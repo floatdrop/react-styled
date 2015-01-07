@@ -27,6 +27,7 @@
     "react": "^0.12.2"
   },
   "dependencies": {
+    "camelcase": "^1.0.2",
     "postcss": "^4.0.0"
   }
 }

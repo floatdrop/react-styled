@@ -7,12 +7,12 @@ var cheerio = require('cheerio');
 var assert = require('assert');
 
 it('should apply styles to simple button', function () {
-	var styled = new Styled('button { border-radius: 5px; }; span { color: black; }');
+	var styled = new Styled('button { border-radius: 5px }; button span { color: black }');
 
 	var Button = React.createClass({
 		render: styled(function () {
 			return React.createElement('button', null,
-				React.createElement('span', null, this.props.children)
+				React.createElement('span')
 			);
 		})
 	});
@@ -20,6 +20,6 @@ it('should apply styles to simple button', function () {
 	var markup = React.renderToStaticMarkup(React.createElement(Button));
 	var $ = cheerio.load(markup);
 
-	assert.equal($('button').attr('style'), 'border-radius: 5px');
-	assert.equal($('button span').attr('style'), 'color: black');
+	assert.equal($('button').attr('style'), 'border-radius:5px;');
+	assert.equal($('button span').attr('style'), 'color:black;');
 });
