@@ -2,12 +2,12 @@
 
 Simple tool for applying styles to React components.
 
+:warning: __Highly experimental__
+
 __TODO:__
 
  * [ ] Proper CSS matching
  * [ ] Way to work with `:before`, `:after`, etc...
-
-__Highly experimental__
 
 ## Usage
 
