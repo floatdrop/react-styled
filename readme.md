@@ -7,7 +7,9 @@ Simple tool for applying styles to React components.
 __TODO:__
 
  * [ ] Proper CSS matching
- * [ ] Way to work with `:before`, `:after`, etc...
+ * [ ] Pass this.state and this.props to selector matching
+ * [ ] Implement className generation in cases when `:before` is used
+ * [ ] Implement `<style>` tag generation for custom classes
 
 ## Usage
 
