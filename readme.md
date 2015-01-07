@@ -39,16 +39,20 @@ var Styled = require('react-styled');
 var styled = new Styled(require('css!./index.css'));
 
 var Button = React.createClass({
+	getInitialState: function() {
+		return {pressed: 'no'};
+	},
+
 	onMouseUp: function () {
-		this.props.pressed = 'no';
+		this.setState({pressed: 'no'});
 	},
 
 	onMouseLeave: function () {
-		this.props.pressed = 'no';
+		this.setState({pressed: 'no'});
 	},
 
 	onMouseDown: function () {
-		this.props.pressed = 'yes';
+		this.setState({pressed: 'yes'});
 	},
 
 	render: styled(function () {
