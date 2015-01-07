@@ -2,7 +2,7 @@
 
 var postcss = require('postcss');
 var camelCase = require('camelcase');
-var match = require('./match.js');
+var match = require('react-match-selector');
 
 var Styled = function Styled(css) {
 	var cssRoot = postcss.parse(css);
@@ -12,23 +12,23 @@ var Styled = function Styled(css) {
 		cssRoot.each(function (rule) {
 			if (rule.type === 'rule' && match(path, rule.selector)) {
 				rule.eachDecl(function (decl) {
-					element._store.props.style = element._store.props.style || {};
-					element._store.props.style[camelCase(decl.prop)] = decl.value;
+					element.props.style = element.props.style || {};
+					element.props.style[camelCase(decl.prop)] = decl.value;
 				});
 			}
 		});
 
-		var children = element._store.props.children;
+		var children = element.props.children;
 
 		if (children) {
 			if (Array.isArray(children)) {
 				for (var i = 0; i < children.length; i++) {
-					path.push(children[i].type);
+					path.push(children[i]);
 					traverse(children, path);
 					path.pop();
 				}
 			} else {
-				path.push(children.type);
+				path.push(children);
 				traverse(children, path);
 				path.pop();
 			}
@@ -41,7 +41,7 @@ var Styled = function Styled(css) {
 		var self = this;
 		return function () {
 			var element = ReactElement.apply(self);
-			return traverse(element, [element.type]);
+			return traverse(element, [element]);
 		};
 	};
 };
