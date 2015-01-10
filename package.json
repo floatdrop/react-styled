@@ -1,6 +1,6 @@
 {
   "name": "react-styled",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Apply styles from CSS to React DOM",
   "main": "index.js",
   "scripts": {
