@@ -2,7 +2,7 @@
 
 var postcss = require('postcss');
 var camelCase = require('camelcase');
-var match = require('react-match-selector');
+var match = require('./matcher.js');
 
 var Styled = function Styled(css) {
 	var cssRoot = postcss.parse(css);
