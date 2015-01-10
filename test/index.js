@@ -24,8 +24,23 @@ it('should apply styles to simple button', function () {
 	assert.equal($('button span').attr('style'), 'color:black;');
 });
 
+it('should react to props of button', function () {
+	var styled = new Styled('button { border-radius: 5px }; button[hovered="yes"] { color: red }');
 
-it('should react to state of button', function () {
+	var Button = React.createClass({
+		render: styled(function () {
+			return React.createElement('button', {hovered: 'yes'});
+		})
+	});
+
+	var markup = React.renderToStaticMarkup(React.createElement(Button));
+	var $ = cheerio.load(markup);
+
+	assert.equal($('button').attr('style'), 'border-radius:5px;color:red;');
+});
+
+
+it.only('should react to state of button', function () {
 	var styled = new Styled('button { border-radius: 5px }; button[hovered="yes"] { color: red }');
 
 	var Button = React.createClass({
@@ -34,7 +49,7 @@ it('should react to state of button', function () {
 		},
 
 		render: styled(function () {
-			return React.createElement('button', null);
+			return React.createElement('button');
 		})
 	});
 

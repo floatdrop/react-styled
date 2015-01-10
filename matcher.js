@@ -36,19 +36,21 @@ function match(path, selectors) {
 		var selector = selectors[sIdx];
 		var element = path[pathIdx];
 
-		if (selector.combinator === '>' && selector.tag !== element.type) {
-			return false;
+		if (selector.tag !== element.type) {
+			if (selector.combinator === '>') {
+				return false;
+			}
+			continue;
 		}
 
 		if (selector.attributes && !matchAttributes(element, selector.attributes)) {
 			if (selector.combinator === '>') {
 				return false;
 			}
+			continue;
 		}
 
-		if (selector.tag === element.type) {
-			sIdx++;
-		}
+		sIdx++;
 	}
 
 	if (sIdx === selectors.length && pathIdx === path.length) {
