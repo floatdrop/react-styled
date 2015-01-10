@@ -1,8 +1,6 @@
 # react-styled [![Build Status](https://travis-ci.org/floatdrop/react-styled.svg?branch=master)](https://travis-ci.org/floatdrop/react-styled)
 
-Simple tool for applying styles to React components.
-
-:warning: __Highly experimental__
+:warning: __Highly experimental__ tool for applying styles to React components.
 
 __TODO:__
 
