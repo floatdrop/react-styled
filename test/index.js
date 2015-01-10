@@ -40,7 +40,7 @@ it('should react to props of button', function () {
 });
 
 
-it.only('should react to state of button', function () {
+it('should react to state of button', function () {
 	var styled = new Styled('button { border-radius: 5px }; button[hovered="yes"] { color: red }');
 
 	var Button = React.createClass({
