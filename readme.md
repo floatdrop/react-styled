@@ -35,39 +35,29 @@ var React = require('react');
 var Styled = require('react-styled');
 
 // Somehow get index.css contents, webpack for example:
-var styled = new Styled(require('css!./index.css'));
+var styled = new Styled(require('css-loader!./index.css').toString());
 
 var Button = React.createClass({
 	getInitialState: function() {
-		return {pressed: 'no'};
+		return {hovered: 'no'};
 	},
 
-	onMouseUp: function () {
-		this.setState({pressed: 'no'});
+	mouseLeave: function () {
+		this.setState({hovered: 'no'});
 	},
 
-	onMouseLeave: function () {
-		this.setState({pressed: 'no'});
-	},
-
-	onMouseDown: function () {
-		this.setState({pressed: 'yes'});
+	mouseEnter: function () {
+		this.setState({hovered: 'yes'});
 	},
 
 	render: styled(function () {
-		var button = (
-			<button>
-				<span>{this.props.children}</span>
+		return (
+			<button onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
+				<span>
+					{this.props.children}
+				</span>
 			</button>
 		);
-
-		var link = (
-			<a>
-				<span>{this.props.children}</span>
-			</a>
-		);
-
-		return this.props.url ? button : link;
 	})
 });
 ```
