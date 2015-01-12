@@ -22,7 +22,7 @@ describe('props assignment', function() {
 		});
 
 		var button = TestUtils.renderIntoDocument(React.createElement(Button));
-		button.setState({hovered: 'yes'})
+		button.setState({hovered: 'yes'});
 
 		expect(button.getDOMNode().style.display).toBe('block');
 		expect(button.getDOMNode().style.color).toBe('red');
