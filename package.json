@@ -4,7 +4,7 @@
   "description": "Apply styles from CSS to React DOM",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -22,13 +22,17 @@
   },
   "homepage": "https://github.com/floatdrop/react-styled",
   "devDependencies": {
-    "cheerio": "^0.18.0",
-    "mocha": "^2.1.0",
-    "react": "^0.12.2"
+    "jest-cli": "^0.2.1",
+    "react-tools": "^0.12.2"
   },
   "dependencies": {
     "camelcase": "^1.0.2",
     "postcss": "^4.0.0",
     "slick": "^1.12.1"
+  },
+  "jest": {
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules"
+    ]
   }
 }

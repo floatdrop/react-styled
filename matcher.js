@@ -4,8 +4,8 @@ var parse = require('slick').parse;
 
 function getAttr(element, name) {
 	// TODO: Should we look into context to?
-	if (element.state && element.state[name]) {
-		return element.state[name];
+	if (element._owner && element._owner.state && element._owner.state[name]) {
+		return element._owner.state[name];
 	}
 
 	if (element.props && element.props[name]) {
