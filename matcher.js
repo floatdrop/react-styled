@@ -58,8 +58,8 @@ function match(path, selectors) {
 	}
 }
 
-module.exports = function (path, expressions) {
-	var expression = parse(expressions);
+module.exports = function (path, expression) {
+	expression = parse(expression);
 
 	for (var i = 0; i < expression.length; i++) {
 		if (match(path, expression[i])) {

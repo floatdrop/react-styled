@@ -1,22 +1,26 @@
 'use strict';
 
-var postcss = require('postcss');
+var parse = require('css/lib/parse');
 var camelCase = require('camelcase');
 var match = require('./matcher.js');
 
 var Styled = function Styled(css) {
-	var cssRoot = postcss.parse(css);
+	var cssRoot = parse(css);
 
 	function traverse(element, path) {
 		// TODO: optimize with some tree-structure
-		cssRoot.each(function (rule) {
-			if (rule.type === 'rule' && match(path, rule.selector)) {
-				rule.eachDecl(function (decl) {
+		cssRoot.stylesheet.rules.forEach(function (rule) {
+			if (rule.type === 'rule' && match(path, rule.selectors)) {
+				rule.declarations.forEach(function (decl) {
 					element.props.style = element.props.style || {};
-					element.props.style[camelCase(decl.prop)] = decl.value;
+					element.props.style[camelCase(decl.property)] = decl.value;
 				});
 			}
 		});
+
+		if (!element.props) {
+			return element;
+		}
 
 		var children = element.props.children;
 
@@ -38,9 +42,8 @@ var Styled = function Styled(css) {
 	}
 
 	return function (ReactElement) {
-		var self = this;
 		return function () {
-			var element = ReactElement.apply(self);
+			var element = ReactElement.apply(this);
 			return traverse(element, [element]);
 		};
 	};
