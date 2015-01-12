@@ -16,15 +16,14 @@ describe('props assignment', function() {
 		var styled = new Styled('button { display: block }; button[hovered="yes"] { color: red }');
 
 		var Button = React.createClass({
-			getInitialState: function () {
-				return {hovered: 'yes'};
-			},
 			render: styled(function () {
 				return React.createElement('button');
 			})
 		});
 
 		var button = TestUtils.renderIntoDocument(React.createElement(Button));
+		button.setState({hovered: 'yes'})
+
 		expect(button.getDOMNode().style.display).toBe('block');
 		expect(button.getDOMNode().style.color).toBe('red');
 	});
