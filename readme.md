@@ -6,7 +6,7 @@ __TODO:__
 
  * [ ] Proper CSS matching
  * [x] Pass props to selector matching
- * [ ] Pass state to selector matching
+ * [x] Pass state to selector matching
  * [ ] Implement className generation in cases when `:before` is used
  * [ ] Implement `<style>` tag generation for custom classes
 
